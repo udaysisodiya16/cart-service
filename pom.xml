@@ -11,7 +11,7 @@
 	<groupId>com.capstone</groupId>
 	<artifactId>cartservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Cart Service</name>
+	<name>cart-service</name>
 	<description>Cart Service project</description>
 	<url/>
 	<licenses>
