@@ -16,6 +16,15 @@ public class Cart {
     private List<CartItem> items;
     private double total;
 
+    public Cart() {
+    }
+
+    public Cart(String userId, List<CartItem> items, double total) {
+        this.userId = userId;
+        this.items = items;
+        this.total = total;
+    }
+
     // Nested CartItem class
     @Getter
     @Setter
