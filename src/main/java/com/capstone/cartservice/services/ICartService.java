@@ -1,0 +1,13 @@
+package com.capstone.cartservice.services;
+
+import com.capstone.cartservice.models.Cart;
+
+public interface ICartService {
+
+    Cart getCart(String userId);
+
+    Boolean addToCart(String userId, Cart.CartItem item);
+
+    Boolean clearCart(String userId);
+
+}
