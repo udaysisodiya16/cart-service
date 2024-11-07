@@ -15,14 +15,14 @@ public class CartService implements ICartService {
     private CartRepository cartRepository;
 
     @Autowired
-    private RedisTemplate<String, Cart> redisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
 
     private static final String CART_PREFIX = "cart:";
 
     @Override
     public Cart getCart(String userId) {
         String redisKey = CART_PREFIX + userId;
-        Cart cart = redisTemplate.opsForValue().get(redisKey);
+        Cart cart = (Cart) redisTemplate.opsForValue().get(redisKey);
 
         if (cart == null) {
             cart = cartRepository.findById(userId).orElse(new Cart());

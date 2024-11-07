@@ -25,10 +25,16 @@ public class CartController {
         return ResponseEntity.ok(cartMapper.cartToCartDto(cart));
     }
 
-    @PostMapping("/{userId}/add")
+    @PostMapping("/{userId}")
     public ResponseEntity<Boolean> addToCart(@PathVariable String userId, @RequestBody CartItemDto cartItemDto) {
         Cart.CartItem cartItem = cartMapper.cartItemDtoToCartItem(cartItemDto);
         Boolean status = cartService.addToCart(userId, cartItem);
+        return ResponseEntity.ok(status);
+    }
+
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<Boolean> clearCart(@PathVariable String userId) {
+        Boolean status = cartService.clearCart(userId);
         return ResponseEntity.ok(status);
     }
 }
