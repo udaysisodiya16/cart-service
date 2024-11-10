@@ -5,6 +5,7 @@ import com.capstone.cartservice.dtos.CartItemDto;
 import com.capstone.cartservice.mappers.CartMapper;
 import com.capstone.cartservice.models.Cart;
 import com.capstone.cartservice.services.ICartService;
+import jakarta.validation.Valid;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class CartController {
     }
 
     @PostMapping("/{userId}")
-    public ResponseEntity<CartDto> addToCart(@PathVariable String userId, @RequestBody CartItemDto cartItemDto) {
+    public ResponseEntity<CartDto> addToCart(@PathVariable String userId, @RequestBody @Valid CartItemDto cartItemDto) {
         Cart.CartItem cartItem = cartMapper.cartItemDtoToCartItem(cartItemDto);
         Cart cart = cartService.addToCart(userId, cartItem);
         return ResponseEntity.ok(cartMapper.cartToCartDto(cart));
