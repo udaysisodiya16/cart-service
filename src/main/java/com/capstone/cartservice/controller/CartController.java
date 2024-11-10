@@ -26,10 +26,10 @@ public class CartController {
     }
 
     @PostMapping("/{userId}")
-    public ResponseEntity<Boolean> addToCart(@PathVariable String userId, @RequestBody CartItemDto cartItemDto) {
+    public ResponseEntity<CartDto> addToCart(@PathVariable String userId, @RequestBody CartItemDto cartItemDto) {
         Cart.CartItem cartItem = cartMapper.cartItemDtoToCartItem(cartItemDto);
-        Boolean status = cartService.addToCart(userId, cartItem);
-        return ResponseEntity.ok(status);
+        Cart cart = cartService.addToCart(userId, cartItem);
+        return ResponseEntity.ok(cartMapper.cartToCartDto(cart));
     }
 
     @DeleteMapping("/{userId}")

@@ -37,7 +37,7 @@ public class CartService implements ICartService {
     }
 
     @Override
-    public Boolean addToCart(String userId, Cart.CartItem item) {
+    public Cart addToCart(String userId, Cart.CartItem item) {
         Cart cart = getCart(userId);
         if (cart == null) {
             cart = new Cart(userId, new ArrayList<>(), 0);
@@ -48,7 +48,7 @@ public class CartService implements ICartService {
         cart.setTotal(cart.getItems().stream().mapToDouble(i -> i.getQuantity() * i.getPrice()).sum());
         cartRepository.save(cart);
         redisTemplate.opsForValue().set(CART_PREFIX + userId, cart, 1, TimeUnit.HOURS);
-        return true;
+        return cart;
     }
 
     @Override

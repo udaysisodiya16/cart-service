@@ -6,7 +6,7 @@ public interface ICartService {
 
     Cart getCart(String userId);
 
-    Boolean addToCart(String userId, Cart.CartItem item);
+    Cart addToCart(String userId, Cart.CartItem item);
 
     Boolean clearCart(String userId);
 
