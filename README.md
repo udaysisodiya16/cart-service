@@ -1,4 +1,4 @@
-# **Cart & Checkout Service**
+# **Cart Service**
 
 A Spring Boot application that provides shopping cart and checkout functionality using **MongoDB** for persistent data
 storage and **Redis** for fast, in-memory access. This service includes APIs for adding items to the cart, reviewing the
